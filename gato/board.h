@@ -27,27 +27,31 @@ private:
     stack<int> freeSpaces;
     stack<int> lastMoves;
     int winer;
-    //TODO add a player class to add p1 and p2
     player *p1, *p2;
     
     
 public:
+    board();
+    board(struct grid g);
     board(player *player1, player *player2);
     board(struct grid g, player *player1, player *player2);
     ~board();
-    bool put(int n, int player); //n =  cell number, player = (-1,1)
-    int checkWin(); // returns -1, 1, or zero if no win
-    bool checkWin(int Player);
-    bool checkFull();
-    bool checkOver();
-    struct grid getGrid();
-    stack<int> getFreeSpaces();
-    void undoLastMove();
-    void print();
-    void pPrint();
-    void genRandomGrid();
+    bool put(int n, int player); // N =  cell number, player = (-1,1)
+    int checkWin();              // Returns -1, 1, or zero if no win
+    bool checkWin(int Player);   // Checks for a winer
+    bool checkFull();            // Checks for a full board
+    bool checkOver();            // Checks for a GameOver
+    bool setPlayers(player* pl1,player* pl2);
+    struct grid getGrid();       // Returns game Grid
+    stack<int> getFreeSpaces();  // Returns cells in Grid that have not been played
+    void undoLastMove();         // Reverts last move
+    void print();                // Print grid numbers
+    void pPrint();               // Grid's pretty print
+    void genRandomGrid();        // Generates a random grid
+    void removePlayers();        // Makes player* = NULL
     
-    //TODO add a play function
+    // Play function
+    void play();
     
     
 };

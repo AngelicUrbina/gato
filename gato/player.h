@@ -21,6 +21,13 @@ private:
 public:
     player(int pType, int playerNumber);
     ~player();
+    int move();                           // Returns cell number where player moves
+    int humanMove();                      // Returns cell number (0 - 8)
+    // Getters and Setters
+    int getPlayerType();
+    int getPlayerN();
+    void setPlayerType(int pType);
+    void setPlayerN(int pNum);
 };
 
 

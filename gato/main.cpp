@@ -15,13 +15,9 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
     player p1(HUMAN,1);
-    player p2(HUMAN,2);
+    player p2(HUMAN,-1);
     board b(&p1,&p2);
-    b.genRandomGrid();
-    b.pPrint();
-    
-    if (b.checkWin()) cout << "Player won!" << endl;
-    else cout << "Player didn't win!" << endl;
+    b.play();
     return 0;
 }
 
