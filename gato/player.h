@@ -11,8 +11,8 @@
 
 #include <iostream>
 #include "board.h"
-#define COMPUTER = -1;
-#define HUMAN = 1;
+#define COMPUTER -1
+#define HUMAN 1
 
 class player {
 private:

@@ -14,13 +14,9 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-
-    grid g;
-    g = {1,0,1,-1,1,-1,0,0,1};
-    player p1(1,1);
-    player p2(1,2);
-    board b(g,&p1,&p2);
-    //b.checkWin()
+    player p1(HUMAN,1);
+    player p2(HUMAN,2);
+    board b(&p1,&p2);
     b.genRandomGrid();
     b.pPrint();
     
