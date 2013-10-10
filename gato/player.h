@@ -28,6 +28,8 @@ public:
     int getPlayerN();
     void setPlayerType(int pType);
     void setPlayerN(int pNum);
+    // AI
+    int computerMove();
 };
 
 
