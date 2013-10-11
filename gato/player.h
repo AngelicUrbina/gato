@@ -14,22 +14,26 @@
 #define COMPUTER -1
 #define HUMAN 1
 
+class board;
 class player {
 private:
     int playerType;
     int playerN;
+    int oponentN;
+    
 public:
     player(int pType, int playerNumber);
     ~player();
-    int move();                           // Returns cell number where player moves
-    int humanMove();                      // Returns cell number (0 - 8)
+    int move(board *b);                   // Returns cell number where player moves
+    int humanMove(board *b);                      // Returns cell number (0 - 8)
     // Getters and Setters
     int getPlayerType();
     int getPlayerN();
     void setPlayerType(int pType);
     void setPlayerN(int pNum);
     // AI
-    int computerMove();
+    int computerMove(board *b);
+    
 };
 
 

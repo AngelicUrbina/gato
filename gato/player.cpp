@@ -11,15 +11,17 @@
 player::player(int pType, int playerNumber) {
     playerType = pType;
     playerN = playerNumber;
+    if (playerN == -1) oponentN = 1;
+    else oponentN = -1;
 }
 player::~player() {
     
 }
-int player::move() {
-    if (playerType == HUMAN) return humanMove();
-    else return -1; //TODO computerMove();
+int player::move(board *b) {
+    if (playerType == HUMAN) return humanMove(b);
+    else return computerMove(b);
 }
-int player::humanMove() {
+int player::humanMove(board *b) {
     int n;
     do {
         cout << "  Please choose a number acording to Grid Setup " << endl;
@@ -27,6 +29,7 @@ int player::humanMove() {
     } while (n!=0 && n!=1 && n!=2 && n!=3 && n!=4 && n!=5 && n!=6 && n!=7 && n!=8);
     return n;
 }
+
 int player::getPlayerType() {
     return playerType;
 }
@@ -38,4 +41,8 @@ void player::setPlayerType(int pType) {
 }
 void player::setPlayerN(int pNum) {
     playerN = pNum;
+}
+
+int player::computerMove(board *b) {
+    return 0;
 }

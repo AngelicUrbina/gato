@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <stack>
+#include <vector>
 #include "player.h"
 
 using namespace std;
@@ -24,7 +25,8 @@ class player;
 class board {
 private:
     grid grid;     //Acceptable inputs are -1, 0, and 1.
-    stack<int> freeSpaces;
+    vector<int> freeSpaces;
+
     stack<int> lastMoves;
     int winer;
     player *p1, *p2;
@@ -43,12 +45,13 @@ public:
     bool checkOver();            // Checks for a GameOver
     bool setPlayers(player* pl1,player* pl2);
     struct grid getGrid();       // Returns game Grid
-    stack<int> getFreeSpaces();  // Returns cells in Grid that have not been played
+    vector<int> getFreeSpaces(); // Returns cells in Grid that have not been played
     void undoLastMove();         // Reverts last move
     void print();                // Print grid numbers
     void pPrint();               // Grid's pretty print
     void genRandomGrid();        // Generates a random grid
     void removePlayers();        // Makes player* = NULL
+    void printFreeSpaces();      // Debug function to print Free Spaces
     
     // Play function
     void play();
