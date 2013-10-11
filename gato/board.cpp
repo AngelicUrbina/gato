@@ -236,33 +236,12 @@ void board::play() {
 
             
         }
-        
         pPrint();
         winer = checkWin();
         if (winer == 0) cout << "It's a draw" << endl;
         else cout << "Winer: " << winer << endl; //TODO Print p1 or p2
         
-//        for (int i = 0; i<20000; i++) {
-//            pPrint();
-//            if (i%2 == 0) {
-//                if (p1->getPlayerType() == HUMAN) cout << "P1 Human Moves"<< endl;
-//                else cout << "P1 Computer Moves"<< endl;
-//                put(p1->move(this),p1->getPlayerN());
-//            }
-//            else {
-//                if (p1->getPlayerType() == HUMAN) cout << "P2 Human Moves"<< endl;
-//                else cout << "P2 Computer Moves"<< endl;
-//                put(p2->move(this),p2->getPlayerN());
-//            }
-//            winer = checkWin();
-//            if (checkOver()) {
-//                pPrint();
-//                if (winer == 0) cout << "It's a draw" << endl;
-//                else cout << "Winer: " << winer << endl; //TODO Print p1 or p2
-//                break;
-//            }
-//        }
-        
     }
+    
     
 }

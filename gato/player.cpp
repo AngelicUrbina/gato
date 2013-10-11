@@ -22,11 +22,19 @@ int player::move(board *b) {
     else return computerMove(b);
 }
 int player::humanMove(board *b) {
+    //int free[b->getFreeSpaces().size()];
+    vector<int> freeSpaces = b->getFreeSpaces();
+    bool err = true;
     int n;
     do {
-        cout << "  Please choose a number acording to Grid Setup " << endl;
+        cout << "  Please choose a free cell acording to Grid Setup " << endl;
         cin >> n;
-    } while (n!=0 && n!=1 && n!=2 && n!=3 && n!=4 && n!=5 && n!=6 && n!=7 && n!=8);
+        for (vector<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+            if (n == *it) {
+                err = false;
+            }
+        }
+    } while (err);
     return n;
 }
 
@@ -44,5 +52,5 @@ void player::setPlayerN(int pNum) {
 }
 
 int player::computerMove(board *b) {
-    return 0;
+    return 0; //TODO
 }

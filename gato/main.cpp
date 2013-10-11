@@ -17,7 +17,6 @@ int main(int argc, const char * argv[])
     player p1(HUMAN,1);
     player p2(HUMAN,-1);
     board b(&p1,&p2);
-    b.printFreeSpaces();
     b.play();
     return 0;
 }
