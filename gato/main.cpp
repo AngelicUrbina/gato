@@ -14,8 +14,8 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    player p1(COMPUTER,1);
-    player p2(COMPUTER,-1);
+    player p1(COMPUTER,CROSS);
+    player p2(COMPUTER,CIRCLE);
     board b(&p1,&p2);
     b.playSilent();
 //    for (int i = 0; i<9; i++) {

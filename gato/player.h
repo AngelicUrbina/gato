@@ -14,6 +14,8 @@
 #include "board.h"
 #define COMPUTER -1
 #define HUMAN 1
+#define CROSS 1
+#define CIRCLE -1
 
 class board;
 class player {

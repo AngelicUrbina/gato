@@ -119,7 +119,7 @@ void board::undoLastMove() {
     if (!lastMoves.empty()) {
         grid.cell[lastMoves.top()] = 0;
         lastMoves.pop();
-        winer = 0;
+        winer = checkWin();
     }
 }
 void board::print() {
@@ -141,7 +141,7 @@ void board::print() {
 }
 
 void board::pPrint() {
-    cout << "--- GAME ---" << endl;
+    cout << "---- GAME ----" << endl;
     
     for (int i = 0; i < 3; i++) {
         switch (grid.cell[i]) {
@@ -197,7 +197,7 @@ void board::removePlayers() {
     p1 = NULL;
     p2 = NULL;
 }
-void board::printFreeSpaces() {
+void board::printFreeSpaces() {                         // Debug Function
     cout << " Printing Free Spaces: " << endl;
     for (list<int>::iterator it = freeSpaces.begin(); it!=freeSpaces.end(); it++) {
         cout << *it << endl;

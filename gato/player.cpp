@@ -51,9 +51,11 @@ void player::setPlayerN(int pNum) {
     playerN = pNum;
 }
 
+// Computer move
 int player::computerMove(board *b) {
     int score;
-    return max(b,&score);    
+    int move = max(b,&score);
+    return move;
 }
 // TODO Check minimax
 int player::max(board *b, int* score) {
@@ -66,10 +68,11 @@ int player::max(board *b, int* score) {
     for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); ++it) {
         //cerr << *it << endl;
         b->put(*it, playerN);
+        //b->pPrint();    // TODO remove
         if (b->checkOver()) newScore = getScore(b);
         else newMove = min(b, &newScore);
         b->undoLastMove();
-        if (newScore > bestScore) {
+        if (bestScore == 0 || newScore > bestScore) {
             bestMove = *it;
             bestScore = newScore;
             //cerr << *it << endl;
@@ -86,10 +89,11 @@ int player::min(board *b, int* score) {
     list<int> freeSpaces = b->getFreeSpaces();
     for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); ++it) {
         b->put(*it, oponentN);
+        //b->pPrint();  // TODO remove
         if (b->checkOver()) newScore = getScore(b);
         else newMove = max(b, &newScore);
         b->undoLastMove();
-        if (newScore < bestScore) {
+        if (bestScore == 0 || newScore < bestScore) {
             bestMove = *it;
             bestScore = newScore;
             //cerr << *it << endl;
