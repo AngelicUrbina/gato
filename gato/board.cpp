@@ -106,7 +106,7 @@ bool board::setPlayers(player* pl1,player* pl2) {
 struct grid board::getGrid() {
     return grid;
 }
-vector<int> board::getFreeSpaces() {
+list<int> board::getFreeSpaces() {
     freeSpaces.clear();
     for (int i= 0; i<9; i++) {
         if (grid.cell[i]==0) {
@@ -199,7 +199,7 @@ void board::removePlayers() {
 }
 void board::printFreeSpaces() {
     cout << " Printing Free Spaces: " << endl;
-    for (vector<int>::iterator it = freeSpaces.begin(); it!=freeSpaces.end(); it++) {
+    for (list<int>::iterator it = freeSpaces.begin(); it!=freeSpaces.end(); it++) {
         cout << *it << endl;
     }
     cout << " End of Free Spaces " << endl;

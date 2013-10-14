@@ -23,13 +23,13 @@ int player::move(board *b) {
 }
 int player::humanMove(board *b) {
     //int free[b->getFreeSpaces().size()];
-    vector<int> freeSpaces = b->getFreeSpaces();
+    list<int> freeSpaces = b->getFreeSpaces();
     bool err = true;
     int n;
     do {
         cout << "  Please choose a free cell acording to Grid Setup " << endl;
         cin >> n;
-        for (vector<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+        for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
             if (n == *it) {
                 err = false;
             }
@@ -60,8 +60,8 @@ int player::max(board *b, int* score) {
     int bestMove = 0;
     int bestScore = 0;
     int newScore = 0;
-    vector<int> freeSpaces = b->getFreeSpaces();
-    for (vector<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+    list<int> freeSpaces = b->getFreeSpaces();
+    for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
         b->put(*it, playerN);
         if (b->checkOver()) newScore = getScore(b);
         else min(b, &newScore);
@@ -79,8 +79,8 @@ int player::min(board *b, int* score) {
     int bestMove = 0;
     int bestScore = 0;
     int newScore = 0;
-    vector<int> freeSpaces = b->getFreeSpaces();
-    for (vector<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+    list<int> freeSpaces = b->getFreeSpaces();
+    for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
         b->put(*it, oponentN);
         if (b->checkOver()) newScore = getScore(b);
         else max(b, &newScore);
