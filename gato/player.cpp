@@ -51,48 +51,60 @@ void player::setPlayerN(int pNum) {
     playerN = pNum;
 }
 
-int player::computerMove(board *b) { // TODO Clean up :)
+int player::computerMove(board *b) {
     int score;
     return max(b,&score);    
 }
 // TODO Check minimax
 int player::max(board *b, int* score) {
-    int bestMove = 0;
-    int bestScore = 0;
-    int newScore = 0;
-    list<int> freeSpaces = b->getFreeSpaces();
-    for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
-        b->put(*it, playerN);
-        if (b->checkOver()) newScore = getScore(b);
-        else min(b, &newScore);
-        b->undoLastMove();
-        if (newScore > bestScore) {
-            bestMove = *it;
-            bestScore = newScore;
-        }
-        
-    }
-    *score = bestScore;
-    return bestMove;
+//    int bestMove = 0;
+//    int bestScore = 0;
+//    int newScore = 0;
+//    list<int> freeSpaces = b->getFreeSpaces();
+//    int n[freeSpaces.size()];
+//    for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+//        for (int j = 0; j <= freeSpaces.size() ; j++) {
+//            n[j] = *it;
+//        }
+//    }
+//    for (int i = 0; i <= freeSpaces.size() ; i++ ) {
+//        b->put(i, playerN);
+//        if (b->checkOver()) newScore = getScore(b);
+//        else min(b, &newScore);
+//        b->undoLastMove();
+//        if (newScore > bestScore) {
+//            bestMove = i;
+//            bestScore = newScore;
+//        }
+//        
+//    }
+//    *score = bestScore;
+//    return bestMove;
 }
 int player::min(board *b, int* score) {
-    int bestMove = 0;
-    int bestScore = 0;
-    int newScore = 0;
-    list<int> freeSpaces = b->getFreeSpaces();
-    for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
-        b->put(*it, oponentN);
-        if (b->checkOver()) newScore = getScore(b);
-        else max(b, &newScore);
-        b->undoLastMove();
-        if (newScore < bestScore) {
-            bestMove = *it;
-            bestScore = newScore;
-            cerr << *it << endl;
-        }
-    }
-    *score = bestScore;
-    return bestMove;
+//    int bestMove = 0;
+//    int bestScore = 0;
+//    int newScore = 0;
+//    list<int> freeSpaces = b->getFreeSpaces();
+//    int n[freeSpaces.size()];
+//    for (list<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+//        for (int j = 0; j <= freeSpaces.size() ; j++) {
+//            n[j] = *it;
+//        }
+//    }
+//    for (int i = 0; i <= freeSpaces.size() ; i++ ) {
+//        b->put(i, oponentN);
+//        if (b->checkOver()) newScore = getScore(b);
+//        else max(b, &newScore);
+//        b->undoLastMove();
+//        if (newScore < bestScore) {
+//            bestMove = i;
+//            bestScore = newScore;
+//            cerr << i << endl;
+//        }
+//    }
+//    *score = bestScore;
+//    return bestMove;
 }
 int player::getScore(board *b) {
     if (b->checkOver()) {
