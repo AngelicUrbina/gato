@@ -51,6 +51,53 @@ void player::setPlayerN(int pNum) {
     playerN = pNum;
 }
 
-int player::computerMove(board *b) {
-    return 0; //TODO
+int player::computerMove(board *b) { // TODO Clean up :)
+    int score;
+    return max(b,&score);    
+}
+// TODO Check minimax
+int player::max(board *b, int* score) {
+    int bestMove = 0;
+    int bestScore = 0;
+    int newScore = 0;
+    vector<int> freeSpaces = b->getFreeSpaces();
+    for (vector<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+        b->put(*it, playerN);
+        if (b->checkOver()) newScore = getScore(b);
+        else min(b, &newScore);
+        b->undoLastMove();
+        if (newScore > bestScore) {
+            bestMove = *it;
+            bestScore = newScore;
+        }
+        
+    }
+    *score = bestScore;
+    return bestMove;
+}
+int player::min(board *b, int* score) {
+    int bestMove = 0;
+    int bestScore = 0;
+    int newScore = 0;
+    vector<int> freeSpaces = b->getFreeSpaces();
+    for (vector<int>::iterator it = freeSpaces.begin(); it != freeSpaces.end(); it++) {
+        b->put(*it, oponentN);
+        if (b->checkOver()) newScore = getScore(b);
+        else max(b, &newScore);
+        b->undoLastMove();
+        if (newScore < bestScore) {
+            bestMove = *it;
+            bestScore = newScore;
+            cerr << *it << endl;
+        }
+    }
+    *score = bestScore;
+    return bestMove;
+}
+int player::getScore(board *b) {
+    if (b->checkOver()) {
+        if (b->checkWin()==playerN) return 1;
+        else return -1;
+    }
+    return 0;
 }

@@ -10,6 +10,7 @@
 #define __gato__player__
 
 #include <iostream>
+#include <list>
 #include "board.h"
 #define COMPUTER -1
 #define HUMAN 1
@@ -33,6 +34,10 @@ public:
     void setPlayerN(int pNum);
     // AI
     int computerMove(board *b);
+    // max min
+    int max(board *b, int* score);
+    int min(board *b, int* score);
+    int getScore(board *b);
     
 };
 

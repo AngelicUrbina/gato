@@ -51,6 +51,10 @@ bool board::put(int n, int player) {
         grid.cell[n] = player;
         lastMoves.push(n);
         
+        
+        winer = checkWin();
+        getFreeSpaces();
+        
         return true;
     }
     else return false;
@@ -245,3 +249,43 @@ void board::play() {
     
     
 }
+void board::playSilent() {
+    bool brk = false;
+    if (p1!=NULL && p2!=NULL) {
+        
+        while (!checkOver()) {
+            
+            // Player 1
+            while (!brk) {
+                pPrint();
+                brk = put(p1->move(this),p1->getPlayerN());
+            }
+            brk = false;
+            
+            if (checkOver()) {
+                break;
+            }
+            
+            // Player 2
+            while (!brk) {
+                brk = put(p2->move(this),p2->getPlayerN());
+            }
+            brk = false;
+            
+            
+        }
+        pPrint();
+        winer = checkWin();
+        if (winer == 0) cout << "It's a draw" << endl;
+        else cout << "Winer: " << winer << endl; //TODO Print p1 or p2
+        
+    }
+}
+
+void board::clean() {
+    freeSpaces.empty();
+    for (int i = 0; i<9; i++) {
+        grid.cell[i] = 0;
+        freeSpaces.push_back(i);
+    }
+    winer = 0;}

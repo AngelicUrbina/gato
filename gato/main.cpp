@@ -14,10 +14,14 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-    player p1(HUMAN,1);
-    player p2(HUMAN,-1);
+    player p1(COMPUTER,1);
+    player p2(COMPUTER,-1);
     board b(&p1,&p2);
-    b.play();
+    b.playSilent();
+//    for (int i = 0; i<9; i++) {
+//        b.clean();
+//
+//    }
     return 0;
 }
 

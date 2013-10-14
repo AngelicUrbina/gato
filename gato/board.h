@@ -55,6 +55,8 @@ public:
     
     // Play function
     void play();
+    void playSilent();
+    void clean();
     
     
 };
